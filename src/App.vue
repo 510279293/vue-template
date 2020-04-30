@@ -9,6 +9,11 @@
 export default {
   name: 'App',
   components: {
+  },
+  methods: {
+      api(){
+        alert(233)
+      }
   }
 }
 </script>

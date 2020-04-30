@@ -48,7 +48,7 @@ const checkStatus = response => {
 // 请求返回内容的返回码校验
 const checkCodeNum = ({ data }) => {
   const { codeNum, value } = data;
-
+  console.log(value)
   if (codeNum === 2003) {
     // router.push({ path: '/home/indexs' });
   }

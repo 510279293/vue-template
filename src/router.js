@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import routerConfig from '@/config/routes';
-import { localStorage } from '@/utils/utils';
+// import { localStorage } from '@/utils/utils';
 
 const routerMethods = ['push', 'replace'];
 
@@ -24,7 +24,8 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-                            
+   console.log(to,from,next)
 });
 
 export default router;
+

@@ -1,5 +1,4 @@
 import moment from 'moment';
-
 /* eslint-disable no-useless-escape */
 const reg = /(((^https?:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+(?::\d+)?|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)$/;
 
@@ -60,7 +59,8 @@ export function transformDataToFour(data = []) {
         return Object.assign(prev, curr);
     }, {});
 
-    const result = Object.keys(mapper).map(key => ({ name: key, value: mapper[key], percent: `${mapper[key].toFixed(2)}%` }));
+    const result = Object.keys(mapper).map(key => 
+        ({ name: key, value: mapper[key], percent: `${mapper[key].toFixed(2)}%` }));
     result.sort((a, b) => parseInt(a.name, 10) - parseInt(b.name, 10));
 
     return result;
