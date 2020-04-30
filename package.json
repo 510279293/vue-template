@@ -46,6 +46,9 @@
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
+  "pre-commit": {
+    "run": "lint"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged",
     "commit-msg": "commitlint -e"
