@@ -23,9 +23,9 @@ const router = new Router({
     routes: routerConfig,
 });
 
-router.beforeEach((to, from, next) => {
-   console.log(to,from,next)
-});
+// router.beforeEach((to, from, next) => {
+//    console.log(to,from,next)
+// });
 
 export default router;
 

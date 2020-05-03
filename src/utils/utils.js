@@ -89,4 +89,4 @@ export function findValueInObjectArray(value, sources = [], compareProperty = 'i
 
 // 按需加载
 export const _import = (file) => () =>
-   import('@/pages/' + file + '.vue').then((m) => m.default);
+   import('@/' + file + '.vue').then((m) => m.default);
