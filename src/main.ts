@@ -11,7 +11,6 @@ import extend from './extend';
 Vue.config.productionTip = false
 
 extend(Vue);
-
 new Vue({
   router,
   store,

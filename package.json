@@ -20,11 +20,14 @@
     "url": ""
   },
   "dependencies": {
+    "@vue/cli-plugin-typescript": "^4.3.1",
     "ant-design-vue": "^1.5.3",
     "core-js": "^3.6.4",
     "moment": "^2.24.0",
     "numeral": "^2.0.6",
+    "typescript": "^3.8.3",
     "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
     "vue-router": "^3.1.6",
     "vuex": "^3.3.0"
   },
@@ -39,13 +42,13 @@
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
     "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
     "less": "^3.11.1",
     "less-loader": "^6.0.0",
     "postcss-normalize": "^9.0.0",
     "pre-commit": "^1.2.2",
     "stylelint": "^13.3.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
   "pre-commit": {

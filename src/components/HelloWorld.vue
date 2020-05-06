@@ -1,15 +1,24 @@
 <template>
   <div class="hello">
      {{msg}}<br/>
-     hello globalComponent
+     {{name + 'ts-vue 初尝试'}}
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+@Component
+export default class HelloWorld extends Vue{
+  msg: any = null
+  firstName: String = 'zeng'
+  lastName: String = 'qingsen'
+  
+  mounted () {
+    this.msg = 'hello';
+  }
+  get name() {
+    return this.firstName + '  ' + this.lastName; 
   }
 }
 </script>
