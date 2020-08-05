@@ -1,7 +1,7 @@
 <template>
-    <div>
-        template
-    </div>
+  <div>
+    template
+  </div>
 </template>
 <script>
 export default {

@@ -1,13 +1,14 @@
 <template>
-    <section>
-        test
-    </section>
+  <section>
+    test
+  </section>
 </template>
 <script>
 export default {
     name: 'hello',
     data(){
         return{
+
 
         }
     },

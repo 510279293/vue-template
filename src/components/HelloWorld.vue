@@ -1,15 +1,18 @@
 <template>
   <div class="hello">
-     {{msg}}<br/>
-     hello globalComponent
+    {{ msg }}<br>
+    hello globalComponent
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'hello-world',
   props: {
-    msg: String
+    msg: {
+      type: String,
+      default: ''
+    },
   }
 }
 </script>
