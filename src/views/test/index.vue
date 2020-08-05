@@ -1,7 +1,7 @@
 <template>
-    <section>
-        test
-    </section>
+  <section>
+    test
+  </section>
 </template>
 <script>
 export default {
@@ -12,7 +12,7 @@ export default {
         }
     },
     methods: {
-        
+
     }
 }
 </script>

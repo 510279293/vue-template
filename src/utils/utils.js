@@ -59,7 +59,7 @@ export function transformDataToFour(data = []) {
         return Object.assign(prev, curr);
     }, {});
 
-    const result = Object.keys(mapper).map(key => 
+    const result = Object.keys(mapper).map(key =>
         ({ name: key, value: mapper[key], percent: `${mapper[key].toFixed(2)}%` }));
     result.sort((a, b) => parseInt(a.name, 10) - parseInt(b.name, 10));
 

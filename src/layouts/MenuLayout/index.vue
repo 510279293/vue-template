@@ -1,39 +1,43 @@
 <template>
   <div>
-    <a-menu 
-     mode="inline" 
-     :open-keys="openKeys" 
-     :defaultSelectedKeys="[$route.path]"
-     style="width: 256px" 
-     @click="meunClick"
-     @openChange="onOpenChange">
-     <template v-for="(mitem,index) in MenusRouteConfig">
-        <a-sub-menu 
-        v-if="!mitem.hidden && mitem.children"
-        :key="mitem.path">
+    <a-menu
+      mode="inline"
+      :open-keys="openKeys"
+      :defaultSelectedKeys="[$route.path]"
+      style="width: 256px"
+      @click="meunClick"
+      @openChange="onOpenChange"
+    >
+      <template v-for="(mitem) in MenusRouteConfig">
+        <a-sub-menu
+          v-if="!mitem.hidden && mitem.children"
+          :key="mitem.path"
+        >
           <span slot="title">
             <a-icon type="mail" />
-            <span>{{mitem.menuName}}</span>
+            <span>{{ mitem.menuName }}</span>
           </span>
-          <a-menu-item  
-           v-for="(sitem,idx) in mitem.children"
-           :key="sitem.path" >
-            {{sitem.menuName}}
+          <a-menu-item
+            v-for="(sitem) in mitem.children"
+            :key="sitem.path"
+          >
+            {{ sitem.menuName }}
           </a-menu-item>
         </a-sub-menu>
         <a-menu-item
-         v-else
-         :key="mitem.path">
-            {{mitem.menuName}}
-          </a-menu-item>
-     </template>
+          v-else
+          :key="mitem.path"
+        >
+          {{ mitem.menuName }}
+        </a-menu-item>
+      </template>
     </a-menu>
   </div>
 </template>
 <script>
 import MenusRouteConfig from '@/config/menu';
 export default {
-  name: 'MenuLayout',
+  name: 'menu-layout',
   data() {
     return {
       openKeys: [''],

@@ -1,14 +1,14 @@
 <template>
-    <div class="main">
-        <MenuLayout />
-        <router-view />
-    </div>
+  <div class="main">
+    <menu-layout />
+    <router-view />
+  </div>
 </template>
 <script>
 import MenuLayout from '../MenuLayout/index';
 
 export default {
-    name: 'BasicLayout',
+    name: 'basic-layout',
     components: {
         MenuLayout,
     },
@@ -18,7 +18,7 @@ export default {
         }
     },
     methods: {
-        
+
     }
 }
 </script>
