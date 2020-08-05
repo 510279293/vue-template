@@ -65,7 +65,7 @@ const checkCodeNum = ({ data }) => {
 export default function request(url, options) {
     // 根据运行环境切换 api 接口
     const requestURL = process.env.NODE_ENV === 'production' ? process.env.VUE_APP_URL + url : url;
-  
+
     const defaultOptions = {
       credentials: 'include',
       headers: {
@@ -93,7 +93,7 @@ export default function request(url, options) {
         };
       }
     }
-  
+
     // 文件自动下载
     if (newOptions.headers['Content-Type'] === 'application/msexcel') {
       if (requestURL.includes('token')) {

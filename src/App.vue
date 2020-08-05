@@ -19,7 +19,7 @@ export default {
   },
   methods: {
       api(){
-        alert(233)
+        // alert(233);
       }
   }
 }

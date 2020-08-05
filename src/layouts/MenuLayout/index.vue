@@ -1,21 +1,21 @@
 <template>
   <div>
-    <a-menu 
-     mode="inline" 
-     :open-keys="openKeys" 
+    <a-menu
+     mode="inline"
+     :open-keys="openKeys"
      :defaultSelectedKeys="[$route.path]"
-     style="width: 256px" 
+     style="width: 256px"
      @click="meunClick"
      @openChange="onOpenChange">
      <template v-for="(mitem,index) in MenusRouteConfig">
-        <a-sub-menu 
+        <a-sub-menu
         v-if="!mitem.hidden && mitem.children"
         :key="mitem.path">
           <span slot="title">
             <a-icon type="mail" />
             <span>{{mitem.menuName}}</span>
           </span>
-          <a-menu-item  
+          <a-menu-item
            v-for="(sitem,idx) in mitem.children"
            :key="sitem.path" >
             {{sitem.menuName}}
