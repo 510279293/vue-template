@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-menu
+    <!-- <a-menu
       mode="inline"
       :open-keys="openKeys"
       :defaultSelectedKeys="[$route.path]"
@@ -31,24 +31,18 @@
           {{ mitem.menuName }}
         </a-menu-item>
       </template>
-    </a-menu>
+    </a-menu> -->
   </div>
 </template>
 <script>
 import MenusRouteConfig from '@/config/menu';
+import {reactive} from 'vue'
 export default {
-  name: 'menu-layout',
-  data() {
-    return {
-      openKeys: [''],
-      MenusRouteConfig,
-    };
-  },
-  mounted(){
-    console.log(this.$route)
-  },
-  methods: {
-    onOpenChange(openKeys) {
+  setup() {
+    const openKeys = reactive([''])
+    const MenusRouteConfig = reactive(MenusRouteConfig)
+    const meunClick = e => this.$router.push(e.key)
+    const onOpenChange = openKeys => {
       const rootKeys = MenusRouteConfig.map(v => v.path);
       const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
       if (rootKeys.indexOf(latestOpenKey) === -1) {
@@ -56,12 +50,42 @@ export default {
       } else {
         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
-    },
-    meunClick(e) {
-      this.$router.push(e.key)
     }
-  },
-};
+    return {
+      openKeys,
+      MenusRouteConfig,
+      meunClick,
+      onOpenChange
+    }
+  }
+}
+
+// export default {
+//   name: 'menu-layout',
+//   data() {
+//     return {
+//       openKeys: [''],
+//       MenusRouteConfig,
+//     };
+//   },
+//   mounted(){
+//     console.log(this.$route)
+//   },
+//   methods: {
+//     onOpenChange(openKeys) {
+//       const rootKeys = MenusRouteConfig.map(v => v.path);
+//       const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
+//       if (rootKeys.indexOf(latestOpenKey) === -1) {
+//         this.openKeys = openKeys;
+//       } else {
+//         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
+//       }
+//     },
+//     meunClick(e) {
+//       this.$router.push(e.key)
+//     }
+//   },
+// };
 </script>
 <style lang="less" scoped>
 

@@ -8,18 +8,13 @@
 import MenuLayout from '../MenuLayout/index';
 
 export default {
-    name: 'basic-layout',
-    components: {
-        MenuLayout,
-    },
-    data(){
-        return{
+  name: 'basic-layout',
+  components: {
+    MenuLayout
+  },
+  setup() {
 
-        }
-    },
-    methods: {
-
-    }
+  }
 }
 </script>
 <style lang="less" scoped>

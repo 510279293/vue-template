@@ -5,20 +5,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-@Component
-export default class HelloWorld extends Vue{
-  msg: any = null
-  firstName: String = 'zeng'
-  lastName: String = 'qingsen'
-
-  mounted () {
-    this.msg = 'hello';
-  }
-  get name() {
-    return this.firstName + '  ' + this.lastName;
+<script>
+import {ref} from 'vue'
+export default {
+  name: 'hello-world',
+  setup(){
+     const msg = ref('hello')
+     const name = ref('zyy')
+     return {
+       msg,
+       name
+     }
   }
 }
 </script>

@@ -1,7 +1,4 @@
-import Vue from 'vue';
 import Vuex from 'vuex';
-
-Vue.use(Vuex);
 
 const modules = {};
 
@@ -18,13 +15,13 @@ pageModel.keys().forEach(key => {
 })
 
 globalModel.keys().forEach(key => {
-    modules[key.replace(/(\.\/|\.js)/g), ''] = {
+    modules[(key.replace(/(\.\/|\.js)/g), '')] = {
         namespaced: true,
         ...globalModel(key).default
     }
 })
 
-export default new Vuex.Store({
+export default Vuex.createStore({
     strict: process.env.NODE_ENV === 'development',
     modules,
-})
+});

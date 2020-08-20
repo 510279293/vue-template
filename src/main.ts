@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, { createApp } from 'vue';
 import App from './App.vue'
 import router from './router';
 import store from './store'
@@ -8,11 +8,5 @@ import './registerGlobalComponent';
 
 import extend from './extend';
 
-Vue.config.productionTip = false
-
 extend(Vue);
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+// createApp(App).use(router).use(store).mount('#app')
