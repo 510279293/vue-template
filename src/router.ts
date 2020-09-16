@@ -2,16 +2,16 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import routerConfig from '@/config/routes';
 // import { localStorage } from '@/utils/utils';
+const routerMethods: string[] = ['push', 'replace'];
+const RouterPrototype: {[key:string]: any} = Router.prototype
 
-const routerMethods = ['push', 'replace'];
-
-routerMethods.forEach(method => {
-    const originalCall = (Router.prototype)[method];
-    (Router.prototype)[method] = function (location, onResolve, onReject){
+routerMethods.forEach((method: string) => {
+    const originalCall = RouterPrototype[method];
+    RouterPrototype[method] = function (location: any, onResolve: any, onReject: any){
         if (onResolve || onReject) {
             return originalCall.call(this, location, onResolve, onReject);
         }
-        return (originalCall.call(this, location)).catch(err => err);
+        return (originalCall.call(this, location)).catch((err: any) => err);
     }
 })
 

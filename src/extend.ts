@@ -1,7 +1,8 @@
 import moment from 'moment';
 import * as utils from './utils/utils';
+import {VueConstructor} from 'vue/types/vue'
 
-export default Vue => {
+export default (Vue: VueConstructor) => {
     Vue.prototype.$utils = {
         ...utils,
         moment,
