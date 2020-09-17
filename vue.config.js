@@ -1,6 +1,6 @@
 module.exports = {
     lintOnSave: true,
-    publicPath: './',
+    publicPath: '/',
     outputDir: 'dist',
     assetsDir: 'assets',
     devServer: {

@@ -1,13 +1,29 @@
-import axios, {AxiosResponse, AxiosRequestConfig } from 'axios'
-import { codeMessage, RequestOptions } from './requestInterface'
+import axios from 'axios'
+import { RequestOptions } from './requestInterface'
 import successHandler from './successHandler';
 import { requestError } from './errorHandler';
+import {message} from 'ant-design-vue';
+
+const service = axios.create({
+  baseURL: process.env.VUE_APP_BASE_URL, // api base_url
+  timeout: 6000 // 请求超时时间
+})
 
 // 添加请求拦截器
-axios.interceptors.request.use(
-  config =>
-    config,
-  error => Promise.reject(error)
+service.interceptors.request.use(
+  (config: any) => config,
+  (error: any) => Promise.reject(error)
+);
+
+// 添加响应拦截器
+service.interceptors.response.use(
+  (response: any) => response,
+  (error: any) => {
+    console.log(error.response)
+    const {data} = error.response
+    message.error(`接口响应错误: ${JSON.stringify(data)}`)
+    return Promise.reject(error)
+  }
 );
 
 export default function request<T>(options: RequestOptions): Promise<T> {
@@ -35,7 +51,7 @@ export default function request<T>(options: RequestOptions): Promise<T> {
     }
   }
 
-  return axios(requestUrl, newOptions)
+  return service(requestUrl, newOptions)
          .then((response: any) => response.data)
          .then((source: RequestOptions) => successHandler(source, newOptions))
          .catch((error: any) => requestError(error, newOptions))

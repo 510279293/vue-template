@@ -1,18 +1,39 @@
 // vue 路由配置
 import MenusRouteConfig from './menu';
-import { _import } from '@/utils/utils';
-
-const routerConfig = [
-  ...MenusRouteConfig,
+import {Error404, BasicLayout, Test} from './allComponent'
+const staticRouter = [
+  {
+    path: '/',
+    redirect: '/test'
+  },
+  {
+    path: '/404',
+    component: Error404
+  },
   {
     path: '/test',
-    name: 'admin',
     menuName: 'ts-test',
-    component: _import('components/HelloWorld'),
-    meta: {
-      title: '后台'
-    },
+    component: Test
+  },
+  // router@4.0 没有通配符了(加上会报错)
+  {
+    path: '*',
+    redirect: '/404',
+    hidden: true
   }
 ]
 
-export default routerConfig;
+const asyncRouter = [
+  {
+    path: '/admin',
+    name: 'admin',
+    component: BasicLayout,
+    redirect: '/admin/a',
+    children: MenusRouteConfig
+  }
+]
+
+export {
+  staticRouter,
+  asyncRouter
+};

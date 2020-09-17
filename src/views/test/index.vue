@@ -1,6 +1,7 @@
 <template>
   <section>
     test
+    <hello-world />
   </section>
 </template>
 <script>
