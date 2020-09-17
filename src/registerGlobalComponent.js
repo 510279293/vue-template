@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld';
+import { HelloWorld } from '@/config/allComponent'
 
 const components = [
-    HelloWorld,
+    HelloWorld
 ]
-
-components.forEach(component => {
-    Vue.component(component.name, component);
+components.forEach(async component => {
+    const {name} = await component()
+    Vue.component(name, component);
 })

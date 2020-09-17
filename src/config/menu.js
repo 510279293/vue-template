@@ -1,92 +1,60 @@
-// eslint-disable-next-line no-unused-vars
-import { _import } from '@/utils/utils';
-
-const BasicLayout = _import('layouts/BasicLayout/index');
+import {Test} from './allComponent'
 
 const MenusRouteConfig = [
  {
-    path: '/a',
-    name: 'admin',
+    path: '/admin/a',
+    name: 'admina',
     menuName: '菜单一',
     hidden: false,
-    component: BasicLayout,
+    component: Test,
     meta: {
       title: '后台'
-    },
-    children: [
-      {
-        path: '/aa',
-        name: 'admin',
-        menuName: '菜单1.1',
-        component: _import('views/test/index'),
-        meta: {
-          title: '后台'
-        },
-      }
-    ],
+    }
  },
  {
-    path: '/b',
-    name: 'admin',
-    menuName: '菜单二',
-    redirect: '/bb',
-    hidden: true,
-    component: BasicLayout,
-    meta: {
-      title: '后台'
+  path: '/admin/b',
+  name: 'adminb',
+  menuName: '菜单2',
+  hidden: false,
+  component: Test,
+  meta: {
+    title: '后台'
+  },
+  children: [
+    {
+      path: '/admin/b/a',
+      menuName: '222',
+      component: Test
     },
-    children: [
-      {
-        path: '/bb',
-        name: 'admin',
-        menuName: '菜单2.1',
-        component: _import('views/test/index'),
-        meta: {
-          title: '后台'
-        },
-      }
-    ],
- },
- {
-    path: '/c',
-    name: 'admin',
-    menuName: '菜单三',
-    component: BasicLayout,
-    meta: {
-      title: '后台'
+    {
+      path: '/admin/b/b',
+      menuName: '2333',
+      component: Test
+    }
+  ]
+},
+{
+  path: '/admin/c',
+  name: 'adminc',
+  menuName: '菜单2',
+  hidden: false,
+  component: Test,
+  meta: {
+    title: '后台'
+  },
+  children: [
+    {
+      path: '/admin/c/a',
+      menuName: 'ccc',
+      component: Test
     },
-    children: [
-      {
-        path: '/cc',
-        name: 'admin',
-        menuName: '菜单3.1',
-        component: _import('views/test/index'),
-        meta: {
-          title: '后台'
-        },
-      }
-    ],
- },
- {
-    path: '/d',
-    name: 'admin',
-    menuName: '菜单四',
-    component: BasicLayout,
-    meta: {
-      title: '后台'
-    },
-    children: [
-      {
-        path: '/dd',
-        name: 'admin',
-        menuName: '菜单4.1',
-        component: _import('views/test/index'),
-        meta: {
-          title: '后台'
-        },
-      }
-    ],
- }
+    {
+      path: '/admin/c/b',
+      menuName: '233cc3',
+      component: Test
+    }
+  ]
+},
 ]
 
 export default MenusRouteConfig;
