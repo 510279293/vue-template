@@ -2,14 +2,19 @@ import request from '@/plugins/request';
 import { stringify } from 'qs';
 
 // post
-export async function postApi(params) {
-    return request('/api/postUrl', {
+export async function postApi(data) {
+    return request({
+        url: '/api/postUrl',
         method: 'POST',
-        data: params,
+        data,
     });
 }
 
 // get
-export async function getApi(params) {
-    return request(`/api/getUrl?${stringify(params)}`);
+export async function getApi(data) {
+    return request({
+        url: `/api/getUrl?${stringify(data)}`,
+        method: 'GET',
+        data,
+    });
 }
