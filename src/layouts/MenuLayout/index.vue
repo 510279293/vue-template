@@ -1,22 +1,22 @@
 <template>
   <div>
-    <!-- <a-menu
+    <a-menu
       mode="inline"
-      :open-keys="openKeys"
-      :defaultSelectedKeys="[$route.path]"
+      :openKeys="openKeys"
+      :selectedKeys="[$route.path]"
+      :inline-collapsed="collapsed"
       style="width: 256px"
       @click="meunClick"
       @openChange="onOpenChange"
     >
-      <template v-for="(mitem) in MenusRouteConfig">
+      <template v-for="(mitem) in MenusRoute">
         <a-sub-menu
           v-if="!mitem.hidden && mitem.children"
           :key="mitem.path"
         >
-          <span slot="title">
-            <a-icon type="mail" />
+          <template v-slot:title>
             <span>{{ mitem.menuName }}</span>
-          </span>
+          </template>
           <a-menu-item
             v-for="(sitem) in mitem.children"
             :key="sitem.path"
@@ -31,61 +31,56 @@
           {{ mitem.menuName }}
         </a-menu-item>
       </template>
-    </a-menu> -->
+    </a-menu>
   </div>
 </template>
 <script>
 import MenusRouteConfig from '@/config/menu';
-import {reactive} from 'vue'
 export default {
-  setup() {
-    const openKeys = reactive([''])
-    const MenusRouteConfig = reactive(MenusRouteConfig)
-    const meunClick = e => this.$router.push(e.key)
-    const onOpenChange = openKeys => {
-      const rootKeys = MenusRouteConfig.map(v => v.path);
+  data() {
+    return {
+      mode: 'inline',
+      collapsed: false,
+      openKeys: [''],
+      MenusRoute: MenusRouteConfig,
+    }
+  },
+  mounted () {
+    this.updateMenu()
+  },
+  methods: {
+    meunClick(e){
+      this.$router.push(e.key)
+    },
+    onOpenChange(openKeys) {
+      console.log(openKeys)
+      const rootKeys = this.MenusRoute.map(v => v.path);
       const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
-      if (rootKeys.indexOf(latestOpenKey) === -1) {
+      if (!rootKeys.includes(latestOpenKey)) {
         this.openKeys = openKeys;
       } else {
         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
-    }
-    return {
-      openKeys,
-      MenusRouteConfig,
-      meunClick,
-      onOpenChange
-    }
+    },
+    updateMenu () {
+      const routes = this.$route.matched.concat()
+      const { hidden } = this.$route.meta
+      if (routes.length >= 3 && hidden) {
+        routes.pop()
+        this.selectedKeys = [routes[routes.length - 1].path]
+      } else {
+        this.selectedKeys = [routes.pop().path]
+      }
+      const openKeys = []
+      if (this.mode === 'inline') {
+        routes.forEach(item => {
+          openKeys.push(item.path)
+        })
+      }
+      this.collapsed ? (this.cachedOpenKeys = openKeys) : (this.openKeys = openKeys)
+    },
   }
 }
-
-// export default {
-//   name: 'menu-layout',
-//   data() {
-//     return {
-//       openKeys: [''],
-//       MenusRouteConfig,
-//     };
-//   },
-//   mounted(){
-//     console.log(this.$route)
-//   },
-//   methods: {
-//     onOpenChange(openKeys) {
-//       const rootKeys = MenusRouteConfig.map(v => v.path);
-//       const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
-//       if (rootKeys.indexOf(latestOpenKey) === -1) {
-//         this.openKeys = openKeys;
-//       } else {
-//         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
-//       }
-//     },
-//     meunClick(e) {
-//       this.$router.push(e.key)
-//     }
-//   },
-// };
 </script>
 <style lang="less" scoped>
 

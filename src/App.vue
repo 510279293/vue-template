@@ -1,23 +1,24 @@
 <template>
-  <!-- <a-locale-provider :locale="locale"> -->
-  <div id="app">
-    <router-view />
-  </div>
-  <!-- </a-locale-provider> -->
+  <a-config-provider :locale="locale">
+    <div>
+      <router-view />
+    </div>
+  </a-config-provider>
 </template>
 
 <script>
-// import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
-// import { ref } from 'vue'
+import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
 export default {
   setup(){
-    return {}
+    return {
+      locale: zhCN
+    }
   }
 }
 </script>
 
 <style lang="less">
 #app {
-  color: red;
+
 }
 </style>

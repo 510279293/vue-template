@@ -24,7 +24,9 @@
         "esnext",
         "dom",
         "dom.iterable",
-        "scripthost"
+        "scripthost",
+        "esnext.string",
+        "esnext.promise"
       ]
     },
     "exclude": [

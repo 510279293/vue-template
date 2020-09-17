@@ -1,12 +1,17 @@
-import Vue, { createApp } from 'vue';
+import { createApp } from 'vue';
 import App from './App.vue'
 import router from './router';
 import store from './store'
 
-import './plugins';
-import './registerGlobalComponent';
-
+import {Antd} from './plugins';
+import useGlobalComponent from './registerGlobalComponent';
 import extend from './extend';
 
-extend(Vue);
-// createApp(App).use(router).use(store).mount('#app')
+const VueApp = createApp(App)
+useGlobalComponent(VueApp)
+extend(VueApp)
+VueApp
+.use(Antd)
+.use(router)
+.use(store)
+.mount('#app')

@@ -1,19 +1,21 @@
 <template>
   <section>
-    test
+    {{ msg+name }}
+    <hello-world />
   </section>
 </template>
 <script>
+import {ref} from 'vue'
 export default {
-    name: 'hello',
-    data(){
-        return{
-
-        }
-    },
-    methods: {
-
-    }
+  name: 'test',
+  setup(){
+     const msg = ref('hello')
+     const name = ref('zyy')
+     return {
+       msg,
+       name
+     }
+  }
 }
 </script>
 <style lang="less" scoped>

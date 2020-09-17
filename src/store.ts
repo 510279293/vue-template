@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 
-const modules = {};
+const modules: {[key: string]: any} = {};
 
 // 解析 ‘models’ 目录 model.js 文件为带命名空间的模块
 const pageModel = require.context('./views', true, /model.js$/);
@@ -14,14 +14,16 @@ pageModel.keys().forEach(key => {
     }
 })
 
-globalModel.keys().forEach(key => {
+globalModel.keys().forEach((key:string)=> {
+    //@ts-ignore
     modules[(key.replace(/(\.\/|\.js)/g), '')] = {
         namespaced: true,
         ...globalModel(key).default
     }
 })
 
-export default Vuex.createStore({
+const store: any = new Vuex.Store({
     strict: process.env.NODE_ENV === 'development',
     modules,
-});
+})
+export default store
