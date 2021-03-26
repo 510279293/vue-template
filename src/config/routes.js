@@ -1,10 +1,10 @@
 // vue 路由配置
 import MenusRouteConfig from './menu';
-import {Error404, HelloWorld, BasicLayout} from './allComponent'
+import {Error404, HelloWorld, BasicLayout, Login} from './allComponent'
 const staticRouter = [
   {
     path: '/',
-    redirect: '/test'
+    redirect: '/login'
   },
   {
     path: '/404',
@@ -14,6 +14,10 @@ const staticRouter = [
     path: '/test',
     menuName: 'ts-test',
     component: HelloWorld
+  },
+  {
+    path: '/login',
+    component: Login
   },
   // router@4.0 没有通配符了(加上会报错)
   {
